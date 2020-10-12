@@ -18,17 +18,17 @@ import net.fabricmc.loader.api.FabricLoader;
 public class CustomVoid implements ModInitializer {
     public static final String ID = "custom_void";
     public static final Logger LOGGER = LogManager.getLogger("CustomVoid");
-    public static final CustomVoidConfig VOID_CONFIG = AutoConfig.register(CustomVoidConfig.class, GsonConfigSerializer::new).getConfig();
-    
-    
+    public static final CustomVoidConfig VOID_CONFIG = AutoConfig
+            .register(CustomVoidConfig.class, GsonConfigSerializer::new).getConfig();
+
     @Override
     public void onInitialize() {
         LOGGER.log(Level.INFO, "Initializing Custom Void...");
-        
+
         if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
             GoVote.init();
         }
-        
+
         LOGGER.log(Level.INFO, "Initialized Custom Void!");
     }
 }

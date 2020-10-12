@@ -10,7 +10,7 @@ public class CustomVoidModMenu implements ModMenuApi {
     public String getModId() {
         return "customvoid";
     }
-    
+
     @Override
     public ConfigScreenFactory<Screen> getModConfigScreenFactory() {
         return screen -> AutoConfig.getConfigScreen(CustomVoidConfig.class, screen).get();
