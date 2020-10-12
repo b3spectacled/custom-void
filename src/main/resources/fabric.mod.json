@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "customvoid",
+  "version": "${version}",
+
+  "name": "Custom Void",
+  "description": "Simple configurable void.",
+  "authors": [
+    "b3spectacled"
+  ],
+  "contact": {
+    "homepage": "https://github.com/b3spectacled/",
+    "sources": "https://github.com/b3spectacled/custom-void"
+  },
+
+  "license": "LGPLv3",
+  "icon": "assets/customvoid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.bespectacled.customvoid.CustomVoid"
+    ],
+    "modmenu": [
+      "com.bespectacled.customvoid.config.CustomVoidModMenu"
+    ]
+  },
+  "mixins": [
+    "custom_void.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
