@@ -62,6 +62,8 @@ public class MixinWorldRenderer {
 
     @Redirect(method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;F)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/world/ClientWorld$Properties;getSkyDarknessHeight()D"))
     private double modifyVoidThreshold(Properties self) {
+        if (!VOID_CONFIG.renderVoid) return 0.0;
+        
         return VOID_CONFIG.voidThreshold;
     }
 

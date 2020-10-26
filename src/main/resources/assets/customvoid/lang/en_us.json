@@ -1,14 +1,20 @@
 {
     "text.autoconfig.customvoid.title": "Custom Void Configuration",
+    
+    "text.autoconfig.customvoid.option.renderVoid": "Render Void",
+    
     "text.autoconfig.customvoid.option.voidThreshold": "Void Height Threshold",
     "text.autoconfig.customvoid.option.voidThreshold.@Tooltip[0]": "The player height at which",
     "text.autoconfig.customvoid.option.voidThreshold.@Tooltip[1]": "the void appears.",
+    
     "text.autoconfig.customvoid.option.voidTranslateHeight": "Void Translate Height",
     "text.autoconfig.customvoid.option.voidTranslateHeight.@Tooltip[0]": "Move up or down",
     "text.autoconfig.customvoid.option.voidTranslateHeight.@Tooltip[1]": "where the void starts.",
+    
     "text.autoconfig.customvoid.option.blueVoid": "Render Blue Void",
     "text.autoconfig.customvoid.option.blueVoid.@Tooltip[0]": "Render old blue void",
     "text.autoconfig.customvoid.option.blueVoid.@Tooltip[1]": "from Alpha/Beta versions of Minecraft.",
+    
     "text.autoconfig.customvoid.option.skyVoid": "Render Sky Color Void",
     "text.autoconfig.customvoid.option.skyVoid.@Tooltip[0]": "Render void",
     "text.autoconfig.customvoid.option.skyVoid.@Tooltip[1]": "with sky color."

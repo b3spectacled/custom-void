@@ -6,6 +6,8 @@ import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
 
 @Config(name = "customvoid")
 public final class CustomVoidConfig implements ConfigData {
+    public boolean renderVoid = true;
+    
     @ConfigEntry.Gui.Tooltip(count = 2)
     public int voidThreshold = 63;
 
