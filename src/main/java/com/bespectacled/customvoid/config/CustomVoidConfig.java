@@ -9,14 +9,19 @@ public final class CustomVoidConfig implements ConfigData {
     public boolean renderVoid = true;
     
     @ConfigEntry.Gui.Tooltip(count = 2)
+    public boolean voidDynamicHeight = false;
+    
+    @ConfigEntry.Gui.Tooltip(count = 3)
+    public VoidType voidType = VoidType.DEFAULT;
+    
+    @ConfigEntry.Gui.Tooltip(count = 2)
     public int voidThreshold = 63;
 
+    @ConfigEntry.BoundedDiscrete(min = -64, max = 0)
     @ConfigEntry.Gui.Tooltip(count = 2)
     public int voidTranslateHeight = 0;
-
-    @ConfigEntry.Gui.Tooltip(count = 2)
-    public boolean blueVoid = false;
-
-    @ConfigEntry.Gui.Tooltip(count = 2)
-    public boolean skyVoid = false;
+    
+    public enum VoidType {
+        DEFAULT, CLASSIC, SKY
+    }
 }

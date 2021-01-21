@@ -3,10 +3,8 @@
   "minVersion": "0.8",
   "package": "com.bespectacled.customvoid.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-  ],
+  "mixins": [],
   "client": [
-    "MixinMinecraftClient",
     "MixinWorldRenderer"
   ],
   "injectors": {
