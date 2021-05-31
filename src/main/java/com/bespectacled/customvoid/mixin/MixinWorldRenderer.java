@@ -16,6 +16,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.client.world.ClientWorld.Properties;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.HeightLimitView;
 
 @Mixin(value = WorldRenderer.class, priority = 1002)
 public class MixinWorldRenderer {
@@ -26,33 +27,28 @@ public class MixinWorldRenderer {
     @Unique private CustomVoidConfig VOID_CONFIG = CustomVoid.VOID_CONFIG;
 
     @Redirect(
-        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;F)V", 
+        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;F)V", 
         at = @At(
             value = "INVOKE", 
-            target = "Lcom/mojang/blaze3d/systems/RenderSystem;color3f(FFF)V", 
-            ordinal = 1
+            target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderColor(FFFF)V", 
+            ordinal = 5
         )
     )
-    private void modifyVoidColor(float r, float g, float b) {
-        Vec3d skyColor = this.world.method_23777(this.client.gameRenderer.getCamera().getBlockPos(), 0.1f);
+    private void modifyVoidColor(float r, float g, float b, float a) {
+        Vec3d skyColor = this.world.method_23777(this.client.gameRenderer.getCamera().getPos(), 0.1f);
         float x = (float) skyColor.x;
         float y = (float) skyColor.y;
         float z = (float) skyColor.z;
-        
+                
         switch(VOID_CONFIG.voidType) {
-            case CLASSIC:
-                RenderSystem.color3f(x * 0.2F + 0.04F, y * 0.2F + 0.04F, z * 0.6F + 0.1F);
-                break;
-            case SKY:
-                RenderSystem.color3f(x, y, z);
-                break;
-            default:
-                RenderSystem.color3f(0f, 0f, 0f);
+            case CLASSIC -> RenderSystem.setShaderColor(x * 0.2F + 0.04F, y * 0.2F + 0.04F, z * 0.6F + 0.1F, a);
+            case SKY -> RenderSystem.setShaderColor(x * 0.2F + 0.04F, y * 0.2F + 0.04F, z * 0.6F + 0.1F, a);
+            default -> RenderSystem.setShaderColor(0f, 0f, 0f, a);
         }
     }
 
     @Redirect(
-        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;F)V", 
+        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;F)V", 
         at = @At(
             value = "INVOKE", 
             target = "Lnet/minecraft/client/util/math/MatrixStack;translate(DDD)V"
@@ -72,13 +68,13 @@ public class MixinWorldRenderer {
     }
 
     @Redirect(
-        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;F)V", 
+        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;F)V",
         at = @At(
             value = "INVOKE", 
-            target = "Lnet/minecraft/client/world/ClientWorld$Properties;getSkyDarknessHeight()D"
+            target = "Lnet/minecraft/client/world/ClientWorld$Properties;getSkyDarknessHeight(Lnet/minecraft/world/HeightLimitView;)D"
         )
     )
-    private double modifyVoidThreshold(Properties self) {
+    private double modifyVoidThreshold(Properties self, HeightLimitView world) {
         if (!VOID_CONFIG.renderVoid) return 0.0;
         
         return VOID_CONFIG.voidThreshold;
