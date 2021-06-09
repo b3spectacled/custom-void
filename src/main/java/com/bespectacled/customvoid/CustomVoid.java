@@ -18,6 +18,5 @@ public class CustomVoid implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.log(Level.INFO, "Initializing Custom Void...");
-        LOGGER.log(Level.INFO, "Initialized Custom Void!");
     }
 }

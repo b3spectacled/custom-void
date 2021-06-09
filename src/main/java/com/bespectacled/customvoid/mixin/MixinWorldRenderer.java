@@ -27,7 +27,7 @@ public class MixinWorldRenderer {
     @Unique private CustomVoidConfig VOID_CONFIG = CustomVoid.VOID_CONFIG;
 
     @Redirect(
-        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;F)V", 
+        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLjava/lang/Runnable;)V", 
         at = @At(
             value = "INVOKE", 
             target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderColor(FFFF)V", 
@@ -40,15 +40,15 @@ public class MixinWorldRenderer {
         float y = (float) skyColor.y;
         float z = (float) skyColor.z;
                 
-        switch(VOID_CONFIG.voidType) {
+        switch (VOID_CONFIG.voidType) {
             case CLASSIC -> RenderSystem.setShaderColor(x * 0.2F + 0.04F, y * 0.2F + 0.04F, z * 0.6F + 0.1F, a);
-            case SKY -> RenderSystem.setShaderColor(x * 0.2F + 0.04F, y * 0.2F + 0.04F, z * 0.6F + 0.1F, a);
-            default -> RenderSystem.setShaderColor(0f, 0f, 0f, a);
+            case SKY -> RenderSystem.setShaderColor(x, y, z, a);
+            default -> RenderSystem.setShaderColor(r, g, b, a);
         }
     }
 
     @Redirect(
-        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;F)V", 
+        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLjava/lang/Runnable;)V", 
         at = @At(
             value = "INVOKE", 
             target = "Lnet/minecraft/client/util/math/MatrixStack;translate(DDD)V"
@@ -68,7 +68,7 @@ public class MixinWorldRenderer {
     }
 
     @Redirect(
-        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;F)V",
+        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLjava/lang/Runnable;)V",
         at = @At(
             value = "INVOKE", 
             target = "Lnet/minecraft/client/world/ClientWorld$Properties;getSkyDarknessHeight(Lnet/minecraft/world/HeightLimitView;)D"
