@@ -11,12 +11,18 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 
 public class CustomVoid implements ModInitializer {
-    public static final String ID = "custom_void";
-    public static final Logger LOGGER = LogManager.getLogger("CustomVoid");
+    public static final String MOD_ID = "custom_void";
+    public static final String MOD_NAME = "Custom Void";
     public static final CustomVoidConfig VOID_CONFIG = AutoConfig.register(CustomVoidConfig.class, GsonConfigSerializer::new).getConfig();
+    
+    private static final Logger LOGGER = LogManager.getLogger("CustomVoid");
 
+    public static void log(Level level, String message) {
+        LOGGER.log(level, "[" + MOD_NAME + "] {}", message);
+    }
+    
     @Override
     public void onInitialize() {
-        LOGGER.log(Level.INFO, "Initializing Custom Void...");
+        log(Level.INFO, "Initializing Custom Void...");
     }
 }
