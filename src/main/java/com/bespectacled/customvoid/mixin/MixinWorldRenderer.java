@@ -35,7 +35,7 @@ public class MixinWorldRenderer {
         )
     )
     private void modifyVoidColor(float r, float g, float b, float a) {
-        Vec3d skyColor = this.world.method_23777(this.client.gameRenderer.getCamera().getPos(), 0.1f);
+        Vec3d skyColor = this.world.getSkyColor(this.client.gameRenderer.getCamera().getPos(), 0.1f);
         float x = (float) skyColor.x;
         float y = (float) skyColor.y;
         float z = (float) skyColor.z;
