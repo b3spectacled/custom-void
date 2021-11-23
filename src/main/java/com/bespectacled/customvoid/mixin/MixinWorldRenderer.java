@@ -28,8 +28,8 @@ public class MixinWorldRenderer {
     @Redirect(
         method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;F)V", 
         at = @At(
-            value = "INVOKE", 
-            target = "Lcom/mojang/blaze3d/systems/RenderSystem;color3f(FFF)V", 
+            value = "INVOKE",
+            target = "Lcom/mojang/blaze3d/systems/RenderSystem;color3f(FFF)V",
             ordinal = 1
         )
     )
@@ -38,7 +38,7 @@ public class MixinWorldRenderer {
         float x = (float) skyColor.x;
         float y = (float) skyColor.y;
         float z = (float) skyColor.z;
-        
+                
         switch(VOID_CONFIG.voidType) {
             case CLASSIC:
                 RenderSystem.color3f(x * 0.2F + 0.04F, y * 0.2F + 0.04F, z * 0.6F + 0.1F);
