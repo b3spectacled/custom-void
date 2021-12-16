@@ -39,10 +39,16 @@ public class MixinWorldRenderer {
         float x = (float) skyColor.x;
         float y = (float) skyColor.y;
         float z = (float) skyColor.z;
+        
+        float cR = VOID_CONFIG.voidCustomRed;
+        float cG = VOID_CONFIG.voidCustomGreen;
+        float cB = VOID_CONFIG.voidCustomBlue;
                 
         switch (VOID_CONFIG.voidType) {
             case CLASSIC -> RenderSystem.setShaderColor(x * 0.2F + 0.04F, y * 0.2F + 0.04F, z * 0.6F + 0.1F, a);
+            case MODERN -> RenderSystem.setShaderColor(x * 0.2F + 0.04F, y * 0.3F + 0.04F, z * 0.45F + 0.1F, a);
             case SKY -> RenderSystem.setShaderColor(x, y, z, a);
+            case CUSTOM -> RenderSystem.setShaderColor(cR / 255F, cG / 255F, cB / 255F, a);
             default -> RenderSystem.setShaderColor(r, g, b, a);
         }
     }

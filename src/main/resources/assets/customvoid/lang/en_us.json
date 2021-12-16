@@ -18,5 +18,11 @@
     "text.autoconfig.customvoid.option.voidType": "Void Type",
     "text.autoconfig.customvoid.option.voidType.@Tooltip[0]": "DEFAULT: Vanilla void",
     "text.autoconfig.customvoid.option.voidType.@Tooltip[1]": "CLASSIC: Beta/Alpha void",
-    "text.autoconfig.customvoid.option.voidType.@Tooltip[2]": "SKY: Sky color void"
+    "text.autoconfig.customvoid.option.voidType.@Tooltip[3]": "MODERN: Modern Beta/Alpha void",
+    "text.autoconfig.customvoid.option.voidType.@Tooltip[2]": "SKY: Sky color void",
+    "text.autoconfig.customvoid.option.voidType.@Tooltip[4]": "CUSTOM: Custom color void",
+    
+    "text.autoconfig.customvoid.option.voidCustomRed": "Void Custom Red",
+    "text.autoconfig.customvoid.option.voidCustomGreen": "Void Custom Green",
+    "text.autoconfig.customvoid.option.voidCustomBlue": "Void Custom Blue"
 }
