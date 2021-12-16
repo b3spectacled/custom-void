@@ -11,7 +11,7 @@ public final class CustomVoidConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip(count = 2)
     public boolean voidDynamicHeight = false;
     
-    @ConfigEntry.Gui.Tooltip(count = 3)
+    @ConfigEntry.Gui.Tooltip(count = 5)
     public VoidType voidType = VoidType.DEFAULT;
     
     @ConfigEntry.Gui.Tooltip(count = 2)
@@ -21,7 +21,16 @@ public final class CustomVoidConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip(count = 2)
     public int voidTranslateHeight = 0;
     
+    @ConfigEntry.BoundedDiscrete(max = 255)
+    public int voidCustomRed = 60;
+    
+    @ConfigEntry.BoundedDiscrete(max = 255)
+    public int voidCustomGreen = 90;
+    
+    @ConfigEntry.BoundedDiscrete(max = 255)
+    public int voidCustomBlue = 140;
+    
     public enum VoidType {
-        DEFAULT, CLASSIC, SKY
+        DEFAULT, CLASSIC, MODERN, SKY, CUSTOM
     }
 }
