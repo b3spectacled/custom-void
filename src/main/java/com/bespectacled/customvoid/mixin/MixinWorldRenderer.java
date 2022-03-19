@@ -27,7 +27,7 @@ public class MixinWorldRenderer {
     @Unique private CustomVoidConfig VOID_CONFIG = CustomVoid.VOID_CONFIG;
 
     @Redirect(
-        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLjava/lang/Runnable;)V", 
+        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V", 
         at = @At(
             value = "INVOKE", 
             target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderColor(FFFF)V", 
@@ -54,7 +54,7 @@ public class MixinWorldRenderer {
     }
 
     @Redirect(
-        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLjava/lang/Runnable;)V", 
+        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V", 
         at = @At(
             value = "INVOKE", 
             target = "Lnet/minecraft/client/util/math/MatrixStack;translate(DDD)V"
@@ -74,7 +74,7 @@ public class MixinWorldRenderer {
     }
 
     @Redirect(
-        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLjava/lang/Runnable;)V",
+        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V",
         at = @At(
             value = "INVOKE", 
             target = "Lnet/minecraft/client/world/ClientWorld$Properties;getSkyDarknessHeight(Lnet/minecraft/world/HeightLimitView;)D"
