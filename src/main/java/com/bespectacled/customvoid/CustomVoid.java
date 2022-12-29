@@ -18,12 +18,14 @@ public class CustomVoid implements ModInitializer {
     private static final Logger LOGGER = LoggerFactory.getLogger("CustomVoid");
 
     public static void log(Level level, String message) {
+        message = String.format("[%s] %s", MOD_NAME, message);
+        
         switch(level) {
-        case DEBUG: LOGGER.debug(message);
-        case ERROR: LOGGER.error(message);
-        case WARN: LOGGER.warn(message);
-        default: LOGGER.info(message);
-    }
+            case DEBUG: LOGGER.debug(message);
+            case ERROR: LOGGER.error(message);
+            case WARN: LOGGER.warn(message);
+            default: LOGGER.info(message);
+        }
     }
     
     @Override
