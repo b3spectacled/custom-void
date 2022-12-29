@@ -1,8 +1,8 @@
 package com.bespectacled.customvoid;
 
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.event.Level;
 
 import com.bespectacled.customvoid.config.CustomVoidConfig;
 
@@ -15,10 +15,15 @@ public class CustomVoid implements ModInitializer {
     public static final String MOD_NAME = "Custom Void";
     public static final CustomVoidConfig VOID_CONFIG = AutoConfig.register(CustomVoidConfig.class, GsonConfigSerializer::new).getConfig();
     
-    private static final Logger LOGGER = LogManager.getLogger("CustomVoid");
+    private static final Logger LOGGER = LoggerFactory.getLogger("CustomVoid");
 
     public static void log(Level level, String message) {
-        LOGGER.log(level, "[" + MOD_NAME + "] {}", message);
+        switch(level) {
+        case DEBUG: LOGGER.debug(message);
+        case ERROR: LOGGER.error(message);
+        case WARN: LOGGER.warn(message);
+        default: LOGGER.info(message);
+    }
     }
     
     @Override

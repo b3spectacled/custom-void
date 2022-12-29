@@ -27,7 +27,7 @@ public class MixinWorldRenderer {
     @Unique private CustomVoidConfig VOID_CONFIG = CustomVoid.VOID_CONFIG;
 
     @Redirect(
-        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V", 
+        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lorg/joml/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V", 
         at = @At(
             value = "INVOKE", 
             target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderColor(FFFF)V", 
@@ -54,18 +54,18 @@ public class MixinWorldRenderer {
     }
 
     @Redirect(
-        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V", 
+        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lorg/joml/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V", 
         at = @At(
             value = "INVOKE", 
-            target = "Lnet/minecraft/client/util/math/MatrixStack;translate(DDD)V"
+            target = "Lnet/minecraft/client/util/math/MatrixStack;translate(FFF)V"
         )
     )
-    private void modifyVoidTranslation(MatrixStack self, double x, double y, double z) {
+    private void modifyVoidTranslation(MatrixStack self, float x, float y, float z) {
         // y = 12 by default
         y += VOID_CONFIG.voidTranslateHeight;
         
         if (VOID_CONFIG.voidDynamicHeight) {
-            double voidOffset = Math.max(this.client.gameRenderer.getCamera().getPos().y - 65d, 0d);
+            double voidOffset = Math.max(this.client.gameRenderer.getCamera().getPos().y - 65f, 0f);
             
             y += -voidOffset;
         }
@@ -74,7 +74,7 @@ public class MixinWorldRenderer {
     }
 
     @Redirect(
-        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/util/math/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V",
+        method = "renderSky(Lnet/minecraft/client/util/math/MatrixStack;Lorg/joml/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V",
         at = @At(
             value = "INVOKE", 
             target = "Lnet/minecraft/client/world/ClientWorld$Properties;getSkyDarknessHeight(Lnet/minecraft/world/HeightLimitView;)D"
