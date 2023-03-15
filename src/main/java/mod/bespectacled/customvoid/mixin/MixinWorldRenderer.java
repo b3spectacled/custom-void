@@ -1,12 +1,13 @@
-package com.bespectacled.customvoid.mixin;
+package mod.bespectacled.customvoid.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
-import com.bespectacled.customvoid.CustomVoid;
-import com.bespectacled.customvoid.config.CustomVoidConfig;
 import com.mojang.blaze3d.systems.RenderSystem;
+
+import mod.bespectacled.customvoid.CustomVoid;
+import mod.bespectacled.customvoid.config.CustomVoidConfig;
 
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.At;

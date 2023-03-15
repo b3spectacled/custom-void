@@ -1,4 +1,4 @@
-package com.bespectacled.customvoid.config;
+package mod.bespectacled.customvoid.config;
 
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
